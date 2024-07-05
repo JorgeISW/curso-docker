@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 
 # Configura la conexión a MongoDB
-client = MongoClient('mongodb://nico:password@monguito:27017/miapp?authSource=admin')
+client = MongoClient('mongodb://jorge:password@monguito:27017/miapp?authSource=admin')
 db = client.miapp
 animal_collection = db.animales
 
@@ -15,6 +15,7 @@ animal_collection = db.animales
 async def list_animals():
     print('listando... chanchitos...')
     animals = animal_collection.find()
+    print(f'{dumps(animals)}')
     return dumps(animals), 200
 
 # Endpoint para crear un nuevo animal
